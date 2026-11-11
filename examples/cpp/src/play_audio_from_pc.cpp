@@ -20,15 +20,15 @@
      然后在 SDK 根目录下执行示例命令，使用 -i ./<机器人SN>_soc0/id_ed25519 指定密钥。
 
  @usage
-   ./examples/cpp/play_audio_from_pc [-i SSH_KEY] <机器人IP> <音频文件>
+   ./build/aimdk_examples_cpp/play_audio_from_pc [-i SSH_KEY] <机器人IP> <音频文件>
 
    可选参数：
      -i SSH_KEY    SSH 私钥文件路径（机器人需要密钥登录）
 
  @example
-   ./examples/cpp/play_audio_from_pc <机器人IP> mic_mono.wav
+   ./build/aimdk_examples_cpp/play_audio_from_pc <机器人IP> mic_mono.wav
    // 使用 SSH 密钥（网线连接时 IP 为 10.1.1.100）
-   ./examples/cpp/play_audio_from_pc -i ./<机器人SN>_soc0/id_ed25519 10.1.1.100 mic_mono.wav
+   ./build/aimdk_examples_cpp/play_audio_from_pc -i ./<机器人SN>_soc0/id_ed25519 10.1.1.100 mic_mono.wav
  */
 
 #include <algorithm>

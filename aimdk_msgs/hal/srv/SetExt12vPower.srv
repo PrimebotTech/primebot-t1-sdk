@@ -1,0 +1,12 @@
+# 外挂算力板供电控制（XT30 接口）
+
+# 请求头
+CommonRequest request
+
+# 供电使能：true=开启供电，false=关闭供电
+bool enable
+
+---
+
+# 响应头
+CommonResponse header

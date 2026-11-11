@@ -1,25 +1,25 @@
 /*
  @brief Example client for /aimdk_5Fmsgs/srv/PlayEmotion
- 
+
  Usage Note:
    It is recommended to specify the 'type' and ('emotion_ids' or 'file_paths')
    based on your requirements.
    If no parameters are provided, the script will attempt to play a default emotion.
- 
+
  The following ROS parameters can be set via startup arguments:
  --ros-args -p <name>:=<value>
- 
+
  Supported parameters:
-   - type: "emotion" or "file"
+   - type: "emotion" or "video"
    - emotion_ids: integer array, required when type=emotion
-   - file_paths: string array, required when type=file
- 
+   - file_paths: string array, required when type=video
+
  Examples:
-   ros2 run aimdk_examples_cpp play_emotion --ros-args -p
-   type:=emotion -p emotion_ids:="[90]"
- 
-   ros2 run aimdk_examples_cpp play_emotion --ros-args -p
-   type:=file -p file_paths:="[\"/tmp/demo.mp4\"]"
+   # Play built-in emotion with ID 90
+   ros2 run aimdk_examples_cpp play_emotion --ros-args -p type:=emotion -p emotion_ids:="[90]"
+
+   # Play video from file
+   ros2 run aimdk_examples_cpp play_emotion --ros-args -p type:=video -p file_paths:="[\"/tmp/demo.mp4\"]"
  */
 #include "aimdk_msgs/srv/play_emotion.hpp"
 #include "aimdk_msgs/msg/common_request.hpp"
@@ -161,9 +161,9 @@ class PlayEmotionClient : public rclcpp::Node
 
   bool validate_parameters()
   {
-    if (type_ != "emotion" && type_ != "file") return false;
+    if (type_ != "emotion" && type_ != "video") return false;
     if (type_ == "emotion" && emotion_ids_.empty()) return false;
-    if (type_ == "file" && file_paths_.empty()) return false;
+    if (type_ == "video" && file_paths_.empty()) return false;
     return true;
   }
 

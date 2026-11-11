@@ -8,7 +8,7 @@
 
    内置麦（麦克风阵列 aw89403）：
      - 8声道 48kHz S16LE
-     - ch1-2：回采, ch3-8：麦克
+     - ch1-2：回采（扬声器播放时才有数据）, ch3-8：麦克
      - 输出：raw_8ch.wav + mic_mono.wav（ch5-6 混合, 10倍放大）
 
    外置麦（USB 麦克风）：
@@ -450,6 +450,13 @@ int main(int argc, char *argv[]) {
   std::string s_rate = std::to_string(kRate);
   std::string s_device = profile.device_name;
 
+  // Build channel-map: aux0,aux1,...,auxN
+  std::string s_channel_map;
+  for (int i = 0; i < channels; ++i) {
+    if (i > 0) s_channel_map += ',';
+    s_channel_map += "aux" + std::to_string(i);
+  }
+
   // ---- Fork/exec parec so we can kill it cleanly ----
   int pipefd[2];
   if (::pipe(pipefd) < 0) {
@@ -484,6 +491,7 @@ int main(int argc, char *argv[]) {
              "--rate", s_rate.c_str(),
              "--format", profile.format.c_str(),
              "--device", s_device.c_str(),
+             "--channel-map", s_channel_map.c_str(),
              nullptr);
     perror("execlp parec");
     _exit(1);

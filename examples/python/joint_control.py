@@ -26,10 +26,10 @@ Usage:
   python3 joint_control.py --ros-args -p joint_names:=<names> -p target_positions:=<positions>
 
 T1 Available Joints:
-  Left  Arm : FL_HIP_ROLL_Joint  [-0.47, 0.47], FL_HIP_PITCH_Joint [-1.22, 4.36], FL_KNEE_Joint [-2.62, 2.62]
-  Right Arm : FR_HIP_ROLL_Joint  [-0.47, 0.47], FR_HIP_PITCH_Joint [-1.22, 4.36], FR_KNEE_Joint [-2.62, 2.62]
-  Left  Leg : RL_HIP_ROLL_Joint  [-1.57, 1.57], RL_HIP_PITCH_Joint [0.00, 3.14], RL_KNEE_Joint [-2.62, -0.17], RL_FOOT_Joint [-10.0, 10.0]
-  Right Leg : RR_HIP_ROLL_Joint  [-1.57, 1.57], RR_HIP_PITCH_Joint [0.00, 3.14], RR_KNEE_Joint [-2.62, -0.17], RR_FOOT_Joint [-10.0, 10.0]
+  Left  Arm : FL_HIP_ROLL_Joint  [-0.44, 0.44], FL_HIP_PITCH_Joint [-1.19, 4.33], FL_KNEE_Joint [-2.58, 2.58]
+  Right Arm : FR_HIP_ROLL_Joint  [-0.44, 0.44], FR_HIP_PITCH_Joint [-1.19, 4.33], FR_KNEE_Joint [-2.58, 2.58]
+  Left  Leg : RL_HIP_ROLL_Joint  [-1.54, 1.54], RL_HIP_PITCH_Joint [0.03, 3.11], RL_KNEE_Joint [-2.50, -0.21], RL_FOOT_Joint [-10.0, 10.0]
+  Right Leg : RR_HIP_ROLL_Joint  [-1.57, 1.54], RR_HIP_PITCH_Joint [0.03, 3.11], RR_KNEE_Joint [-2.50, -0.21], RR_FOOT_Joint [-10.0, 10.0]
   (Position unit: rad)
 
 Parameters:

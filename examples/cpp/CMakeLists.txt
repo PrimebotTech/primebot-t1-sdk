@@ -22,7 +22,9 @@ set(EXAMPLE_TARGETS
   record_audio
   set_mc_action
   set_preset_motion
-  shutdown_task
+  migrate_system_state
+  set_ext12v_power
+  stop_audio_play
   volume_control
   upper_body_control
 )

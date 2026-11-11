@@ -354,7 +354,7 @@ int main(int argc, char *argv[]) {
 
   node->wait_for_services();
 
-  // Step 1: Ensure the robot is in BIPED_WALK_RUN state
+  // Step 1: Ensure the robot is in QUADRUPED_LOCOMOTION_DEFAULT state
   if (!node->ensure_ready_state()) {
     RCLCPP_ERROR(node->get_logger(), "Failed to prepare robot state for walking.");
     g_node.reset();

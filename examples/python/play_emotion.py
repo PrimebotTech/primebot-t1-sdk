@@ -4,9 +4,9 @@
 
 Description:
   This script demonstrates how to play robot emotions using the PlayEmotion service.
-  Supports both emotion ID mode and file path mode. Includes automatic fallback logic:
-  if the default T-series emotion ID (90) fails, it automatically tries the Q-series
-  fallback ID (3003).
+  Supports built-in emotion IDs and video file playback.
+  Includes automatic fallback logic: if the default T-series emotion ID (90) fails,
+  it automatically tries the Q-series fallback ID (3003).
 
 Prerequisites:
   - PlayEmotion service must be available
@@ -16,12 +16,16 @@ Usage:
   python3 play_emotion.py --ros-args -p type:=<type> -p emotion_ids:=<ids>
 
 Parameters:
-  - type: "emotion" or "file" (Default: emotion)
+  - type: "emotion" or "video" (Default: emotion)
   - emotion_ids: Integer array of emotion IDs (Default: [90] for T-series)
-  - file_paths: String array of emotion file paths (used when type=file)
+  - file_paths: String array of video file paths (used when type=video)
 
 Example:
+  # Play built-in emotion with ID 90
   python3 play_emotion.py --ros-args -p type:=emotion -p emotion_ids:=[90]
+
+  # Play video from file
+  python3 play_emotion.py --ros-args -p type:=video -p file_paths:="['/path/to/video.mp4']"
 """
 
 import rclpy
@@ -132,9 +136,9 @@ class PlayEmotionClient(Node):
         return False
 
     def validate_parameters(self) -> bool:
-        if self.type not in ("emotion", "file"):
+        if self.type not in ("emotion", "video"):
             self.get_logger().error(
-                f"Invalid parameter 'type': {self.type}. Use 'emotion' or 'file'."
+                f"Invalid parameter 'type': {self.type}. Use 'emotion' or 'video'."
             )
             return False
 
@@ -144,9 +148,9 @@ class PlayEmotionClient(Node):
             )
             return False
 
-        if self.type == "file" and not self.file_paths:
+        if self.type == "video" and not self.file_paths:
             self.get_logger().error(
-                "Parameter 'file_paths' must be set when type=file."
+                "Parameter 'file_paths' must be set when type=video."
             )
             return False
 

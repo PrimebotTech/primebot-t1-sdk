@@ -15,13 +15,14 @@
      非 Music 角色播放时会自动降低(duck)音乐音量
 
  Usage:
-   ros2 run aimdk_examples_cpp play_audio_from_robot --ros-args -p
-   file_name:=demo.wav -p file_path:=/tmp -p media_role:=Music
+   ros2 run aimdk_examples_cpp play_audio_from_robot --ros-args \
+     -p file_name:=demo.wav -p file_path:=/tmp -p media_role:=Music
 
  Examples:
-   ros2 run aimdk_examples_cpp play_audio_from_robot --ros-args -p
-   file_name:=小星星.wav -p file_path:=/robot/software/aimrt_agent/bin/cfg/t1/audio
-   -p media_role:=Music
+   ros2 run aimdk_examples_cpp play_audio_from_robot --ros-args \
+     -p file_name:=小星星.wav \
+     -p file_path:=/robot/software/aimrt_agent/bin/cfg/t1/audio \
+     -p media_role:=Music
  
  Other request fields use built-in defaults and are not configurable from
  the command line in this demo.

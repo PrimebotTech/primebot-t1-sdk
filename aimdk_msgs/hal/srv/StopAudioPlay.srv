@@ -1,0 +1,9 @@
+# 停止音频播放
+
+# 请求头
+CommonRequest request
+
+---
+
+# 响应头
+CommonResponse response

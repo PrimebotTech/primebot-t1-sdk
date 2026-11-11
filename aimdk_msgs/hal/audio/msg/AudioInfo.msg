@@ -10,5 +10,5 @@ uint32 size
 # 可选项，Audio format (e.g. S16LE， S32_LE) 默认S16_LE
 string sample_format
 
-# 可选项，Audio coding format (e.g. pcm, wave, opus)
+# 可选项，Audio coding format (e.g. wave, opus)
 string coding_format

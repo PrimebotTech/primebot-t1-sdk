@@ -7,7 +7,7 @@ string file_name
 # 必要项，不设置时使用系统默认路径
 string file_path
 
-# pcm格式必要项，wav格式可选项，音频格式
+# 可选项，音频格式参数
 AudioInfo info
 
 # 必要项，优先级(1~10, 默认6)

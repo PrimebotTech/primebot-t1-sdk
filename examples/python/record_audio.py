@@ -7,7 +7,7 @@
 
 内置麦（麦克风阵列 aw89403）：
   - 8声道 48kHz S16LE
-  - ch1-2：回采, ch3-8：麦克
+  - ch1-2：回采（扬声器播放时才有数据）, ch3-8：麦克
   - 输出：raw_8ch.wav + mic_mono.wav（ch5-6 混合, 10倍放大）
 
 外置麦（USB 麦克风）：
@@ -340,6 +340,7 @@ def record_pcm(robot_ip, profile, duration=5, local_mode=False):
         '--rate', str(RATE),
         '--format', fmt,
         '--device', device,
+        '--channel-map', ','.join(['aux%d' % i for i in range(channels)]),
     ]
 
     if local_mode:

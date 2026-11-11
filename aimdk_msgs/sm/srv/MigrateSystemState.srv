@@ -1,0 +1,11 @@
+# 设置系统状态
+
+# 请求头
+CommonRequest header
+
+# 请求切换的系统状态
+# 支持的值: "Reboot"（重启）, "Shutdown"（关机）
+string state
+---
+# 响应头
+CommonResponse header
