@@ -5,8 +5,6 @@
 Description:
   This script demonstrates how to play robot emotions using the PlayEmotion service.
   Supports built-in emotion IDs and video file playback.
-  Includes automatic fallback logic: if the default T-series emotion ID (90) fails,
-  it automatically tries the Q-series fallback ID (3003).
 
 Prerequisites:
   - PlayEmotion service must be available
@@ -17,7 +15,7 @@ Usage:
 
 Parameters:
   - type: "emotion" or "video" (Default: emotion)
-  - emotion_ids: Integer array of emotion IDs (Default: [90] for T-series)
+  - emotion_ids: Integer array of emotion IDs (Default: [90])
   - file_paths: String array of video file paths (used when type=video)
 
 Example:
@@ -71,18 +69,10 @@ class PlayEmotionClient(Node):
             if not self.validate_parameters():
                 return False
 
-            # 一套代码兼容不同机型，T系列默认ID=90，Q系列默认ID=3003
-            # 第一步：尝试原始请求（默认 ID 为 90）
             ok = self._call_service(self.type, list(self.emotion_ids), list(self.file_paths))
 
-            # 第二步：降级逻辑
-            # 如果是播放表情模式，且尝试 ID 10 失败，则自动尝试播放保底 ID 3003
-            if not ok and self.type == "emotion" and 90 in self.emotion_ids:
-                # 尝试播放保底表情 3003
-                ok = self._call_service("emotion", [3003], [])
-
             if not ok:
-                self.get_logger().error("PlayEmotion request failed after all attempts.")
+                self.get_logger().error("PlayEmotion request failed.")
                 return False
 
             return True
